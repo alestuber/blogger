@@ -54,5 +54,8 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
 
   gem 'guard-rspec', require: false
+
+  gem 'capybara', '~> 2.4.4'
+
 end
 
