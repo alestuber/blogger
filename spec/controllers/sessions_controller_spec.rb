@@ -18,6 +18,11 @@ RSpec.describe SessionsController, type: :controller do
         expect(session[:user_id]).to eq user.id
       end
 
+      it "has the remember_token cookie" do
+        post :create, session: { email: user.email, password: 'password' }
+        expect(cookies.permanent[:remember_token]).to eq user.reload.remember_token
+      end
+
       it "redirects to the new action again" do
         post :create, session: { email: user.email, password: 'password' }
         expect(response).to redirect_to :login

@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
   before_create :create_remember_token
 
 
-  private
-    def create_remember_token
-      self.remember_token = Digest::SHA1.hexdigest SecureRandom.urlsafe_base64
-    end
+  def create_remember_token
+    self.remember_token = Digest::SHA1.hexdigest SecureRandom.urlsafe_base64
+  end
 end
